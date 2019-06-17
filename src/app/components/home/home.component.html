@@ -1,0 +1,21 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="loading" *ngIf="!posts">
+  <p>Cargando...</p>
+</div>
+<div class="container-fluid mt-3" *ngIf="posts">
+  <h1>{{ page_title }}</h1>
+  <p>
+    Bienvenido a mi pequeño proyecto,
+    todo está en pruebas.
+  </p>
+  <hr>
+
+  <app-post-list [posts]="posts"
+    [identity]="identity"
+  ></app-post-list>
+
+</div>

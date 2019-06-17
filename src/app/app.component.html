@@ -1,0 +1,89 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+ 
+<!-- TODO Remove main container => Expand to full screen and responsive  -->
+
+<!--- Main Container -->
+<div class="container"> 
+  <br>
+
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+
+    <a class="navbar-brand" [routerLink]="['/inicio']">
+      <img src="assets/img/logo-angular.svg" class="angular-logo">
+      NodoNade
+    </a>
+
+    <!-- Button that is only shown when the screen is small -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Main content of the navbar -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" *ngFor="let category of categories">
+          <a class="nav-link" [routerLink]="['categoria', category.id]">{{category.name}}</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-right" *ngIf="!identity">
+          <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+            </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-right" *ngIf="identity && identity.displayName">
+        <li class="nav-item">
+          <div class="avatar_mask">
+            <img src="{{ identity.photoURL }}" class="avatar_nav" >
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{identity.displayName}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['/crear-entrada']">Crear entrada</a>
+              <a class="dropdown-item" [routerLink]="['/crear-categoria']">Crear categoría</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/perfil', identity.uid]">Mi perfil</a>
+              <a class="dropdown-item" [routerLink]="['/ajustes', identity.uid]">Ajustes</a>
+              <a class="dropdown-item" [routerLink]="['/logout/1']">Salir</a>
+
+            </div>
+          </li>
+      </ul>
+
+      <!-- For searching (Not used for now) -->
+
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+
+
+    </div>
+  </nav>
+  <!-- End of navbar  -->
+  
+  <!-- Content -->
+  <router-outlet></router-outlet>
+
+
+  <footer class="footer">
+    <hr>
+    &copy; Ignacio Eduardo Loyola Delgado. 2019
+    <hr>
+  </footer>
+
+</div> <!--- CERRAR CONTENEDOR PRINCIPAL -->

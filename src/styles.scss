@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+.angular-logo {
+    margin: 0 4px 3px 0;
+    height: 35px;
+    vertical-align: middle;
+}
+.avatar_mask {
+    width: 40px;
+    height: 40px;
+    border-radius: 900px;
+    overflow: hidden;
+}
+
+.avatar_mask img{
+    height:  50px;
+}
+.avatar_mask_profile {
+    width: 90px;
+    height: 90px;
+    border-radius: 900px;
+    overflow: hidden;
+}
+
+.avatar_mask_profile img{
+    height:  90px;
+}
+.card-header a{
+    color: #444;
+}
+
+.post-image {
+    height: 200px;
+    overflow: hidden;
+}
+.footer{
+    color: lightgray;
+}

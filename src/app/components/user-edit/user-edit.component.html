@@ -1,0 +1,43 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="col-md-12 mt-3">
+  <h1>{{ page_title }}</h1>
+  <p>
+    Modifica tus datos personales de usuario.
+  </p>
+
+    <hr>
+  
+    
+      <!-- Settings form -->
+  
+      <form class ="col-md-5 ml-0 pl-0" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+  
+        <div class="form-group">
+          <label for="displayName">Nombre de usuario</label>
+          <input type="text" name="displayName" #displayName="ngModel" [(ngModel)]="user.displayName" class="form-control" required/>
+  
+          <small *ngIf="!displayName.valid && displayName.touched" class="invalid-feedback d-block">
+            El nombre no es válido
+          </small>
+        </div>
+  
+        <div class="form-group">
+          <label for="bio">Biografía</label>
+          <textarea [froalaEditor]="froala_options" name="bio" #bio="ngModel" [(ngModel)]="user.bio" required></textarea>
+        
+          <small *ngIf="!bio.valid && bio.touched" class="invalid-feedback d-block">
+            La biografía no es válida
+          </small>
+        
+        </div>
+  
+        <input type="submit" value="Guardar" class="btn" [disabled]="userEditForm.invalid">
+  
+      </form>
+  
+      <br/>
+</div>

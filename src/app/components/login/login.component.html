@@ -1,0 +1,25 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="col-md-12 mt-3">
+
+    <h1>{{ page_title }}</h1>
+    <p>
+      Identifícate en la plataforma para comenzar.
+    </p>
+  <div class="col-md-5 ml-0 pl-0"c>
+
+    <div class="authBlock">
+
+      <!-- Calling GoogleAuth Api from AuthService -->
+      <div class="form-group">
+          <button type="button" class="btn btn-succes" (click)="authService.GoogleAuth()">
+            <i class="fa fa-google" aria-hidden="true"></i>
+            Continuar con Google
+          </button>
+      </div>
+
+  </div>
+</div>

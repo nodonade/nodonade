@@ -1,0 +1,31 @@
+<!--
+  Copyright 2019 Ignacio Loyola @nodonade.com
+  Version 0.1 (Working first step blog)
+-->
+<div class="displayTable">
+  <div class="displayTableCell">
+
+    <div class="authBlock">
+      <h3>Gracias por registrarte</h3>
+
+      <div class="formGroup" *ngIf="authService.userData as user">
+        <p class="text-center">Hemos enviado un correo de confimación a <strong>{{user.email}}</strong>.</p>
+        <p class="text-center">Por favor revisa tu correo electrónico y haz click al link de verificación</p>
+      </div>
+      
+      <!-- Calling SendVerificationMail() method using authService Api -->
+      <div class="formGroup">
+        <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
+          <i class="fas fa-redo-alt"></i>
+          Reenviar correo de confirmación
+        </button>
+      </div>
+
+    </div>
+
+    <div class="redirectToLogin">
+      <span>¿Quieres volver? <a [routerLink]="['/login']">Logeate aquí </a> </span>
+    </div>
+
+  </div>
+</div>

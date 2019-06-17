@@ -1,0 +1,32 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="col-md-12 mt-3">
+
+  <h1>{{page_title}}</h1>
+
+  <p>
+    Crea una nueva categoría para el blog.
+  </p>
+
+  <!-- Create category form -->
+
+  <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" class="col-md-5">
+
+    <div class="form-group">
+
+      <label for="name">Nombre</label>
+      <input type="text" name="name" class="form-control" #name="ngModel" [(ngModel)]="category.name" required>
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+        El nombre de la categoría no es válido
+      </small>
+
+    </div>
+
+    <input type="submit" value="Guardar" class="btn btn-succes" [disabled]="categoryForm.invalid">
+
+  </form>
+
+</div>

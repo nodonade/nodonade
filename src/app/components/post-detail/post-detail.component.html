@@ -1,0 +1,19 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="col-md-12" *ngIf="!post">
+Cargando...
+</div>
+
+<div class="col-md-12 mt-3" *ngIf="post">
+  <h1>{{post.title}}</h1>
+  <hr/>
+  <!-- <p>
+    {{post.category.name}} - {{post.user.name + post.user.surname}}
+  </p> Video mostrar el detalle del post -->
+  <!-- Añadir video crear página de perfil de usuarios -->
+  <hr/>
+  <p [innerHtml]="post.content"></p>
+</div>

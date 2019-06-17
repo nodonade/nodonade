@@ -1,0 +1,72 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="col-md-12 mt-3">
+  <h1>{{ page_title }}</h1>
+  <p *ngIf="!is_edit">
+    Añade un nuevo artículo al blog
+  </p>
+
+  <p *ngIf="is_edit && post">
+    Modifica el post {{ post.title }}
+  </p>
+  <hr>
+
+    <!-- Create entry form -->
+
+    <form class ="col-md-5 ml-0 pl-0" #postNew="ngForm" (ngSubmit)="onSubmit(postNew)">
+
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" name="title" #title="ngModel" [(ngModel)]="post.title" class="form-control" required/>
+
+        <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+          El título no es válido
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Contenido</label>
+        <textarea [froalaEditor]="froala_options" name="content" #content="ngModel" [(ngModel)]="post.content" required></textarea>
+      
+        <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">
+          El contenido no es válido
+        </small>
+      
+      </div>
+
+      <div class="form-group">
+
+        <label for="category_id">Categoría</label>
+
+        <select name="category_id" #category="ngModel" [(ngModel)]="post.category_id" class="form-control">
+
+          <option *ngFor="let category of categories" value="{{category.id}}" >
+            {{category.name}}
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="image">Imagen</label>
+
+        <div *ngIf="is_edit && post.image">
+          <img src="{{post.imageURL}}" class="w-100"/>
+        </div>
+
+        <input type="file" (change)="upload($event)" accept=".png,.jpg" #image/>
+
+      </div>
+
+      <input type="submit" value="Guardar" class="btn" [disabled]="postNew.invalid">
+
+    </form>
+
+    <br/>
+
+</div>

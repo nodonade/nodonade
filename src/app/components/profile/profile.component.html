@@ -1,0 +1,38 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="loading" *ngIf="!posts">
+  <p>Cargando...</p>
+</div>
+
+
+<div class="container-fluid mt-3" *ngIf="posts">
+
+  <hr>
+
+  <div id="user-card">
+
+    <div class="avatar_mask_profile float-left mr-3">
+      <img src="{{ user.photoURL }}" class="avatar_nav" />
+    </div>
+
+    <div class="data_mask float-left">
+      <h1>{{ user.displayName }}</h1>
+      <!-- <p *innerHTML="user.bio"></p> -->
+    </div>
+
+    <div class="clearfix"></div>
+
+  </div>
+
+  <hr>
+
+  <!-- Entries list -->
+
+  <app-post-list [posts]="posts"
+    [identity]="identity"
+  ></app-post-list>
+
+</div>

@@ -1,0 +1,24 @@
+<!--  
+ Copyright 2019 Ignacio Loyola @nodonade.com
+ Version 0.1 (Working first step blog) 
+-->
+
+<div class="loading" *ngIf="!category">
+  <p>Cargando...</p>
+</div>
+
+<div class="container-fluid mt-3" *ngIf="category">
+  <h1>{{ category.name }}</h1>
+  <hr>
+
+  <div class="loading" *ngIf="!posts">
+    Cargando listado...
+  </div>
+
+  <div class="alert alert-warning" *ngIf="posts && posts.length == 0">
+    No hay entradas que mostrar en esta categoría
+  </div>
+
+  <app-post-list [posts]="posts" [identity]="identity"></app-post-list>
+
+</div>
