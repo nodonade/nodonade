@@ -33,15 +33,6 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav navbar-right" *ngIf="!identity">
-          <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/login']">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/registro']">Registro</a>
-            </li>
-      </ul>
-
       <ul class="navbar-nav navbar-right" *ngIf="identity && identity.displayName">
         <li class="nav-item">
           <div class="avatar_mask">
@@ -82,7 +73,7 @@
 
   <footer class="footer">
     <hr>
-    &copy; Ignacio Eduardo Loyola Delgado. 2019
+      Made with ❤
     <hr>
   </footer>
 
