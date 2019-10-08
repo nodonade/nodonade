@@ -1,0 +1,91 @@
+[debug] [2019-10-08T12:34:12.382Z] ----------------------------------------------------------------------
+[debug] [2019-10-08T12:34:12.383Z] Command:       /home/nade/.nvm/versions/node/v10.16.3/bin/node /home/nade/.nvm/versions/node/v10.16.3/bin/firebase deploy
+[debug] [2019-10-08T12:34:12.384Z] CLI Version:   7.4.0
+[debug] [2019-10-08T12:34:12.384Z] Platform:      linux
+[debug] [2019-10-08T12:34:12.384Z] Node Version:  v10.16.3
+[debug] [2019-10-08T12:34:12.384Z] Time:          Tue Oct 08 2019 14:34:12 GMT+0200 (Central European Summer Time)
+[debug] [2019-10-08T12:34:12.384Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-10-08T12:34:12.392Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-08T12:34:12.392Z] > authorizing via signed-in user
+[debug] [2019-10-08T12:34:12.392Z] [iam] checking project nodonade for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2019-10-08T12:34:12.393Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-10-08T12:34:12.393Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-10-08T12:34:16.748Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-08T12:34:16.762Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/nodonade:testIamPermissions  
+
+[debug] [2019-10-08T12:34:19.153Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-08T12:34:19.156Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/nodonade  
+ 
+[debug] [2019-10-08T12:34:22.186Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'nodonade'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2019-10-08T12:34:22.192Z] >>> HTTP REQUEST PUT https://nodonade.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+[debug] [2019-10-08T12:34:26.682Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database nodonade is valid
+[debug] [2019-10-08T12:34:26.686Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/nodonade/versions  
+
+[debug] [2019-10-08T12:34:33.095Z] <<< HTTP RESPONSE 200
+[info] i  hosting[nodonade]: beginning deploy...
+[info] i  hosting[nodonade]: found 15 files in dist/frontend2
+[debug] [2019-10-08T12:34:33.106Z] [hosting] hash cache [ZGlzdC9mcm9udGVuZDI] load error: lines is not defined
+[debug] [2019-10-08T12:34:33.183Z] [hosting] hash cache [ZGlzdC9mcm9udGVuZDI] stored for 15 files
+[debug] [2019-10-08T12:34:33.183Z] [hosting][hash queue][FINAL]
+[debug] [2019-10-08T12:34:33.183Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/nodonade/versions/8ba697df1d0f8c31:populateFiles  
+ <request body omitted>
+[debug] [2019-10-08T12:34:34.877Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-08T12:34:34.887Z] [hosting][populate queue][FINAL]
+[debug] [2019-10-08T12:34:34.887Z] [hosting] uploads queued: 4
+[debug] [2019-10-08T12:34:42.044Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[nodonade]: file upload complete
+[debug] [2019-10-08T12:34:42.045Z] [hosting] deploy completed after 8948ms
+[info] i  database: releasing rules...
+[debug] [2019-10-08T12:34:44.753Z] >>> HTTP REQUEST PUT https://nodonade.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+[debug] [2019-10-08T12:34:47.971Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules for database nodonade released successfully
+[debug] [2019-10-08T12:34:47.973Z] [
+  {
+    "config": {
+      "public": "dist/frontend2",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "nodonade"
+    },
+    "site": "nodonade",
+    "version": "sites/nodonade/versions/8ba697df1d0f8c31"
+  }
+]
+[info] i  hosting[nodonade]: finalizing version...
+[debug] [2019-10-08T12:34:47.975Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/nodonade/versions/8ba697df1d0f8c31?updateMask=status  
+
+[debug] [2019-10-08T12:34:51.657Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-08T12:34:51.658Z] [hosting] finalized version for nodonade:
+[info] ✔  hosting[nodonade]: version finalized
+[info] i  hosting[nodonade]: releasing new version...
+[debug] [2019-10-08T12:34:51.659Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/nodonade/releases?version_name=sites/nodonade/versions/8ba697df1d0f8c31  
+
